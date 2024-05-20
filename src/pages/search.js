@@ -7,6 +7,7 @@ const Search = () => {
       <p>Search</p>
       <p>Search</p>
       <p>Search</p>
+      <p>Search</p>
     </div>
   )
 }
