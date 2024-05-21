@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from "./header";
-import SideMenu from "./sideMenu";
+
 
 const Layout = ({ children }) => {
   return(
@@ -8,7 +8,6 @@ const Layout = ({ children }) => {
       <div className="page">
         <Header />
         <div className={'layout-wrapper'}>
-          <SideMenu/>
           <div className={'layout-content-wrapper'}>
             {children}
           </div>
