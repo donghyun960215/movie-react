@@ -1,13 +1,10 @@
 import React, {useEffect, useState} from "react"
 import axios from 'axios'
-
-
+import MovieList from './movielist'
 
 
 const Search = () => {
-  const OMDB_API_KEY = '7035c60c'
-  const [movieData, setMovieData] = useState()
-
+  const [movieData, setMovieData] = useState();
   const thisYear = new Date().getFullYear()+1
   const yearList2 = Array.from({ length: 40 }, (_, i) => i === 0 ? "All year" : thisYear - 1 );
 
@@ -21,9 +18,9 @@ const Search = () => {
       if(year === 'All year'){
         year = "";
       }
-      const response = await axios.get(`https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&s=${title}&type=${type}&y=${year}&page=2`);
+      const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&s=${title}&type=${type}&y=${year}&page=1`);
       console.log(response.data.Search);
-      setMovieData(response.data.Search)
+      setMovieData(response.data.Search);
     }
   };
 
@@ -53,6 +50,9 @@ const Search = () => {
       <div>
         <button type={"submit"}>등록</button>
       </div>
+      {movieData &&
+        <MovieList movies={movieData}/>
+      }
     </form>
   )
 }
