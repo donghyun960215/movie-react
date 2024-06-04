@@ -1,38 +1,101 @@
-.App {
-  text-align: center;
-}
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.page {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin:auto;
+  font-family: "Roboto", sans-serif;
+  width: 1320px;
+}
+.header-menu-wrapper{
+  background-color: orange;
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+  h1{
+    line-height: 1;
+    font-family: "Oswald", sans-serif;
+    font-size: 80px;
+    span{
+      color: aqua;
+    }
+  }
+  p{
+    margin: 30px 0;
+    color: gray
+  }
+}
+.form-inline {
+  display: flex;
+  margin-bottom: 20px;
+  * {
+    font-size: 15px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  .text{
+    width:900px;
+    height:50px;
+    border:1px #e2e4e7 solid;
+    padding:0 0 0 8px;
+    line-height:1;
+    font-size:16px;
+    color:#666;
+    border-radius:5px;
+    margin-right: 10px;
+  }
+  .selects {
+    display: flex;
+    select {
+      width: 140px;
+      height: 52px;
+      font-size: 16px;
+      margin-right: 10px;
+      border:1px #e2e4e7 solid;
+      border-radius:5px;
+    }
+  }
+  button {
+    width: 100px;
+    height: 52px;
+    border:1px #e2e4e7 solid;
+    font-weight: 700;
+    flex-shrink: 0;
+    background: rgba(0, 255, 255, 0.49);
+    border-radius:5px;
+  }
+}
+.movie {
+  float: left;
+  width: 200px;
+  height: 280px;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+  .poster{
+    width: 100%;
+    height: 100%;
+  }
+  .info {
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    backdrop-filter: blur(10px);
+    .year {
+      color: orange;
+    }
+    .title {
+      color: white;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
