@@ -12,6 +12,7 @@ const Search = () => {
   const [type, setType] = useState();
   const [selectedYear, setSelectedYear] = useState("All year")
 
+  //년도 자동계산
   const thisYear = new Date().getFullYear() + 1;
   const yearSelectData = Array.from({ length: 40 }, (_, i) => i === 0 ? "All year" : thisYear - i);
 
@@ -22,17 +23,17 @@ const Search = () => {
   const onsubmit = async (e) => {
     e.preventDefault();
     const current = e.target;
-    if(current.title.value){
-      setTitle(current.title.value);
-      setType(current.type.value);
-      setSelectedYear(current.yearList.value);
-      const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&s=${title}&type=${type}&y=${selectedYear}&page=1`);
+    if(current){
+      setTitle(current?.title.value);
+      setType(current?.type.value);
+      setSelectedYear(current?.yearList.value);
+      const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&s=${current.title.value}&type=${current.type.value}&y=${current.yearList.value}&page=1`);
       setMovieData(response.data.Search);
       setFetching(false)
     }
   };
 
-  const handleScroll = async() => {
+  const getScrollData = async() => {
     const scrollHeight = document.documentElement.scrollHeight;
     const scrollTop = document.documentElement.scrollTop;
     const clientHeight = document.documentElement.clientHeight;
@@ -48,10 +49,10 @@ const Search = () => {
 
   useEffect(() => {
     // scroll event listener 등록
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", getScrollData);
     return () => {
       // scroll event listener 해제
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", getScrollData);
     };
   });
 
@@ -95,7 +96,7 @@ const Search = () => {
         </div>
         </div>
         <div>
-          <button type={"submit"}>등록</button>
+          <button type={"submit"}>검색</button>
         </div>
       </form>
       {movieData && movieData?.map((item, i) => (
