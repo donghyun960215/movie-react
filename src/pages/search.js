@@ -48,12 +48,14 @@ const Search = () => {
     };
 
   useEffect(() => {
-    // scroll event listener 등록
-    window.addEventListener("scroll", getScrollData);
-    return () => {
-      // scroll event listener 해제
-      window.removeEventListener("scroll", getScrollData);
-    };
+    if(movieData){
+      // scroll event listener 등록
+      window.addEventListener("scroll", getScrollData);
+      return () => {
+        // scroll event listener 해제
+        window.removeEventListener("scroll", getScrollData);
+      };
+    }
   });
 
   return  (
@@ -71,7 +73,7 @@ const Search = () => {
         </p>
       </div>
       <form onSubmit={onsubmit} className="form-inline">
-        <div>
+        <div className="inputbox">
           <input
             className="text"
             type={"text"}
@@ -99,22 +101,22 @@ const Search = () => {
           <button type={"submit"}>검색</button>
         </div>
       </form>
-      {movieData && movieData?.map((item, i) => (
-        <div className="movie">
-          <img src={item.Poster}
-               className="poster"
-               alt="poster"
-               width={100}
-               height={150}
-               key={item.imdbID}
-               onClick={() => goToDetail(item.imdbID)}
-          />
-          <div className="info">
-            <div className="year">{item.Year}</div>
-            <div className="title">{item.Title}</div>
+        {movieData && movieData?.map((item, i) => (
+          <div className="movie">
+            <img src={item.Poster}
+                 className="poster"
+                 alt="poster"
+                 width={100}
+                 height={150}
+                 key={item.imdbID}
+                 onClick={() => goToDetail(item.imdbID)}
+            />
+            <div className="info">
+              <div className="year">{item.Year}</div>
+              <div className="title">{item.Title}</div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </>
   )
 }

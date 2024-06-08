@@ -37,14 +37,14 @@
 .form-inline {
   display: flex;
   margin-bottom: 20px;
-  * {
-    font-size: 15px;
-    &:last-child {
-      margin-right: 0;
-    }
+  width: 100%;
+  .inputbox{
+    flex-grow:1;
+    margin-right:20px
   }
   .text{
-    width:900px;
+    /*width:920px;*/
+    width: 100%;
     height:50px;
     border:1px #e2e4e7 solid;
     padding:0 0 0 8px;
@@ -56,8 +56,10 @@
   }
   .selects {
     display: flex;
+
     select {
-      width: 100px;
+      width: 120px;
+      flex-grow: 2;
       height: 52px;
       font-size: 16px;
       margin-right: 10px;
@@ -66,7 +68,7 @@
     }
   }
   button {
-    width: 100px;
+    width: 120px;
     height: 52px;
     border:1px #e2e4e7 solid;
     font-weight: 700;
@@ -74,18 +76,45 @@
     background: rgba(97, 104, 104, 0.49);
     border-radius:5px;
   }
-}
 
+  @media only screen and (max-width: 991.98px) {
+    width: 100%;
+    display: block;
+    .inputbox{
+      margin-right:10px;
+    }
+    .text {
+      width:100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+    .selects {
+      background-color:#e2e4e7;
+      margin-right: 0;
+      margin-bottom: 10px;
+      select {
+        width: 200px;
+      }
+    }
+    button {
+      width: 100%;
+    }
+  }
+}
 .movie {
   float: left;
-  width: 200px;
+  width: 210px;
   height: 280px;
   margin-right:10px;
+  margin-bottom:10px;
   overflow: hidden;
   position: relative;
   .poster{
     width: 100%;
     height: 100%;
+    :last-child {
+      margin-right: 0;
+    }
   }
   .info {
     width: 100%;
@@ -116,7 +145,7 @@
     float: left;
     flex-shrink: 0;
     width: 500px;
-    height: 700px ;
+    height: 700px;
     margin-right: 70px;
     border-radius: 10px;
     background-color: gray;
