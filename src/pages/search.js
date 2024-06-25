@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react"
 import axios, {patch} from 'axios'
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
 
 const Search = () => {
   const navigate = useNavigate();
