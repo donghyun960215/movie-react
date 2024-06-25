@@ -7,13 +7,14 @@ const DetailPage = () => {
   const id = searchParams.get("id");
   const [detailData, setDetailData] = useState();
 
+  const getDetailData = async() => {
+    const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&i=${id}`);
+    setDetailData(response.data);
+  }
 
   useEffect(() => {
     if(!detailData){
-      const getDetailData = async() => {
-        const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&i=${id}`);
-        setDetailData(response.data);
-      }
+      getDetailData();
     }
 
   }, [detailData]);
