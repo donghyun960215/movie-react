@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react"
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
 const DetailPage = () => {
@@ -7,15 +7,15 @@ const DetailPage = () => {
   const id = searchParams.get("id");
   const [detailData, setDetailData] = useState();
 
-  const getDetailData = async() => {
-    const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&i=${id}`);
-    setDetailData(response.data);
-  }
 
   useEffect(() => {
     if(!detailData){
-      getDetailData();
+      const getDetailData = async() => {
+        const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&i=${id}`);
+        setDetailData(response.data);
+      }
     }
+
   }, [detailData]);
 
   return(

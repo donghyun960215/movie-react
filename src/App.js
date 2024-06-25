@@ -4,7 +4,7 @@ import Search from './pages/search';
 import About from './pages/about';
 import Details from './pages/detail';
 
-import { Routes, Route, Navigate, Switch } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
