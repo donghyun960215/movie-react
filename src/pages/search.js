@@ -41,7 +41,6 @@ const Search = () => {
       setPage(page+1);
       const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&s=${title}&type=${type}&y=${selectedYear}&page=${page}`);
       setMovieData(movieData.concat(response.data.Search));
-      console.log(movieData);
       setFetching(true);
     }
     setFetching(false);
@@ -102,13 +101,12 @@ const Search = () => {
         </div>
       </form>
         {movieData && movieData?.map((item, i) => (
-          <div className="movie">
+          <div className="movie" key={item.imdbID}>
             <img src={item.Poster}
                  className="poster"
                  alt="poster"
                  width={100}
                  height={150}
-                 key={item.imdbID}
                  onClick={() => goToDetail(item.imdbID)}
             />
             <div className="info">

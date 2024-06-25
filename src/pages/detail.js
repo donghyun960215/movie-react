@@ -9,12 +9,10 @@ const DetailPage = () => {
 
   const getDetailData = async() => {
     const response = await axios.get(`https://www.omdbapi.com/?apikey=7035c60c&i=${id}`);
-    console.log("get:::",response.data);
     setDetailData(response.data);
   }
 
   useEffect(() => {
-    console.log(id)
     if(!detailData){
       getDetailData();
     }
@@ -25,9 +23,6 @@ const DetailPage = () => {
       <div className="pzoster">
         <div className="poster" style={{backgroundImage: `url(${detailData?.Poster})`}}>
         </div>
-        {/*<div className="poster" style={{backgroundImage: "detailData?.Poster"}}>*/}
-        {/*  <img src={detailData?.Poster} alt=""/>*/}
-        {/*</div>*/}
         <div className="specs">
           <div className="title">
             {detailData?.Title}
@@ -45,7 +40,7 @@ const DetailPage = () => {
             <div className="ratings-wrap">
               {
                 detailData?.Ratings.map((item, i) => (
-                  <div className="rating">
+                  <div className="rating" key={i}>
                   <img src={`https://raw.githubusercontent.com/ParkYoungWoong/vue3-movie-app/master/src/assets/${item.Source}.png`} alt="rating"/>
                   <p>{item.Value}</p>
                   </div>
